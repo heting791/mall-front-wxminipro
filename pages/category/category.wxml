@@ -1,0 +1,63 @@
+<view class="search" style="display: none;">
+  <van-search v-model="value" placeholder="请输入搜索关键词" shape="round" />
+</view>
+
+<view class="main">
+  <!-- <van-sticky> -->
+  <scroll-view class="category-container" id="category-container" scroll-y="true" style="height: {{sideHeight}}px;">
+    <van-sidebar custom-class="sidebar-l" active-key="{{currentIndex}}">
+      <van-sidebar-item title="全部 - 0" data-idx="0" bindtap="changeCurrent" />
+      <van-sidebar-item wx:for="{{categories}}" wx:key="id" title="{{item.name}} - {{item.id}}" data-idx="{{item.id}}" bindtap="changeCurrent" />
+    </van-sidebar>
+  </scroll-view>
+  <!-- </van-sticky> -->
+  <view class="sub-cate-box">
+    <scroll-view class="sub-cate-container" scroll-y="true" scroll-into-view="{{intoView}}" bindscroll="subCateScroll" scroll-with-animation="true" style="height: {{sideHeight}}px;">
+      <view class="sub-cate-list">
+        <view class="category-name">
+          <view class="sub-cate-list-inner" id="sub-cate-list-inner-0">
+
+            <view class="sub-cate-list-item" wx:for="{{allData}}" wx:key="id" wx:for-item="items" data-cate_idx="{{idx}}" data-sub_cate_id="{{items.id}}" bindtap="subCateClick">
+              <van-card price="{{items.price}}" title="{{items.id}} - {{items.title}}" desc="{{items.category}}" thumb="{{items.image1}}">
+                <div slot="footer">
+                  <view class="footer" style="margin-top: -30px;" data-item_id="{{items.id}}" catchtap="toFaved">
+                    <van-icon name="star-o" wx:if="{{!items.faved}}" size="22px" />
+                    <van-icon name="/images/product-detail/star.png" wx:else size="22px" />
+                  </view>
+                </div>
+              </van-card>
+            </view>
+          </view>
+
+        </view>
+        <view>----------------------</view>
+        <view class="category-name" wx:for="{{categories}}" wx:for-index="idx" wx:key="index">
+          <view class="sub-cate-list-inner" id="sub-cate-list-inner-{{item.id}}">
+
+            <view class="sub-cate-list-item" wx:for="{{item.lists}}" wx:key="id" wx:for-item="items" data-cate_idx="{{idx}}" data-sub_cate_id="{{items.id}}" bindtap="subCateClick">
+              <van-card price="{{items.price}}" title="{{items.id}} - {{items.title}}" desc="{{items.category}}" thumb="{{items.image1}}">
+                <div slot="footer">
+                  <view class="footer" style="margin-top: -30px;" data-item_id="{{items.id}}" catchtap="toFaved">
+                    <van-icon name="star-o" wx:if="{{!items.faved}}" size="22px" />
+                    <van-icon name="/images/product-detail/star.png" wx:else size="22px" />
+                  </view>
+                </div>
+              </van-card>
+            </view>
+          </view>
+          <view>----------------------</view>
+        </view>
+      </view>
+    </scroll-view>
+
+  </view>
+
+</view>
+<!-- <block>
+  <view class="shadow" bindtap='hideModal'></view>
+  <view class='choosen' animation='{{animationData}}'>
+    <view class="container-box">
+      这里为内容
+    </view>
+  </view>
+</block> -->

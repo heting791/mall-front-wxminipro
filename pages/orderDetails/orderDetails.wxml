@@ -1,0 +1,83 @@
+<view class="out-container">
+  <view class="process">
+    <view class="process-inner">
+      <view class="address">
+        <view class="process-line">
+          <text></text>
+          <image src="/images/other/vline.png" style="width: 23px;height: 45px;" />
+        </view>
+        <view class="process-info">
+          <view class="process-info-title">送至 {{order.deatailad}}</view>
+          <view class="process-info-text">{{order.name}} {{order.phoneprefix}}-{{order.phone}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="order-info-container" style="background-color: whitesmoke;padding-top: 5px;">
+    <view class="order-info-item" style="width: 97%;margin: 10px auto;background-color: white;border-radius: 10px;padding-top: 1px;">
+      <view class="order-info">
+        <!-- <view class="store-info">
+          <view class="store-head">
+            <image wx:if="{{order.product.store.head}}" src="{{order.product.store.head}}" style="width: 45px;height: 45px;" />
+            <image wx:else src="/images/my/default.png" style="width: 35px;height: 35px;" />
+          </view>
+          <view class="store-text">
+            <view><text style="color: red;font-size: large;font-weight: bolder;">{{order.product.id}}</text> - {{order.product.store.name}}</view>
+          </view>
+        </view> -->
+        <view class="product-card">
+          <van-card price="{{order.price}}" desc="{{order.args}}" title="{{order.title}}" thumb="{{order.image1}}">
+            <div slot="footer">
+              <view class="caozuo" style="display: none;">
+                <text class="subtract" style="border-right: 1px solid lightgray;">-</text>
+                <text class="singleCount">1</text>
+                <text class="add" style="border-left: 1px solid lightgray;"> + </text>
+              </view>
+              <view class="singleCount">X {{order.count}}</view>
+            </div>
+          </van-card>
+        </view>
+        <view class="other">
+          <van-cell-group>
+            <van-cell title="商品总价" value="￥ {{order.totalPrice}}" />
+            <van-cell title="运费" value="￥ 0.00" />
+            <van-cell title="运费险" value="￥ 0.00" />
+            <van-cell title="实付款" value="￥ {{order.totalPrice}}">
+            </van-cell>
+          </van-cell-group>
+        </view>
+        <view class="expansion-icon" wx:if="{{!detailInfoShow}}" style="text-align: center;" bindtap="detailShow">
+          <van-icon name="arrow-down" />
+          <text style="font-size: 13px;color: gray;margin-left: 5px;">展开</text>
+        </view>
+        <view class="detail-info" wx:if="{{detailInfoShow}}">
+          <van-cell-group>
+            <van-cell title="订单编号" value="2023032714040101" />
+            <van-cell title="配送方式" value="{{order.delivery}}" />
+            <van-cell title="订单备注" value="{{order.remark?order.tempRemarks:'无备注'}}" />
+            <van-cell title="创建时间" value="{{order.createtime}}" />
+            <!-- <van-cell title="付款时间" wx:if="{{order.status!='未支付'}}" value="{{order.paymentTime}}" />
+            <van-cell title="发货时间" wx:if="{{order.status!='未支付'&&order.status!='待发货'}}" value="{{order.deliveryTime}}" /> -->
+          </van-cell-group>
+        </view>
+        <view class="expansion-icon" wx:if="{{detailInfoShow}}" style="text-align: center;" bindtap="detailShow">
+          <van-icon name="arrow-up" />
+          <text style="font-size: 13px;color: gray;margin-left: 5px;">收起</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="height: 40px;"></view>
+  <view wx:if="{{currentButtons.way!='complate'}}">
+    <van-goods-action>
+      <button wx:for="{{currentButtons.buttons}}" wx:key="index" type="warn" plain="true" data-button_idx="{{index}}" bindtap="operation">{{item.text}}</button>
+    </van-goods-action>
+  </view>
+  <view wx:else>
+    <van-goods-action>
+      <button type="warn" plain="true" bindtap="back">返回</button>
+    </van-goods-action>
+  </view>
+
+</view>

@@ -1,0 +1,46 @@
+.order-info {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.store-info {
+  margin-top: 20px;
+}
+
+.store-info .store-head,
+.store-info .store-text {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.store-info .store-text {
+  margin-left: 10px;
+  font-size: 15px;
+  line-height: 30px;
+}
+
+.status{
+  width: 96%;
+  height: 35px;
+  line-height: 35px;
+  margin: 5px auto;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: bolder;
+  padding-left: 10px;
+}
+
+
+.button-list button{
+  width: auto;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 15px;
+  color: red;
+  border-radius: 20px;
+  border: 1px solid red;
+  float: right;
+  margin-top: 5px;
+}

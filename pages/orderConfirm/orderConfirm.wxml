@@ -1,0 +1,81 @@
+<view class="index-container">
+  <view class="address" bindtap="goToAddress">
+    <view class="address-icon">
+      <van-icon name="location" color="red" size="20px" />
+    </view>
+    <view class="address-title" style="width: {{deliveryAddress?'80%':'90%'}};">
+      <view class="address-title-inner" wx:if="{{deliveryAddress}}">
+        <view class="address-title-inner-address" style="font-size: 14px;margin-bottom: 5px;font-weight: bolder;">
+          {{deliveryAddress.id}} - {{deliveryAddress.area}} {{deliveryAddress.deatailad}}
+        </view>
+        <view class="address-title-inner-contect" style="font-size: 13px;color: gray;">
+         {{deliveryAddress.name}}  {{deliveryAddress.phone}}
+        </view>
+      </view>
+      <van-cell title="请选择收货地址" wx:else is-link />
+    </view>
+    <view class="address-icon" wx:if="{{deliveryAddress}}">
+      <van-icon name="arrow" size="20px" />
+    </view>
+  </view>
+
+  <view class="order-info-container">
+    <view class="order-info-item" style="margin-bottom: 10px;" wx:for="{{orderList}}" wx:key="id" wx:for-index="idx">
+      <view class="order-info">
+        <!-- <view class="store-info">
+          <view class="store-head">
+            <image wx:if="{{item.order.product.store.head}}" src="{{item.order.product.store.head}}" style="width: 45px;height: 45px;" />
+            <image wx:else src="/images/my/default.png" style="width: 35px;height: 35px;" />
+          </view>
+          <view class="store-text">
+            <view><text style="color: red;font-size: large;font-weight: bolder;">{{item.order.product.id}}</text> - {{item.order.product.store.name}}</view>
+          </view>
+        </view> -->
+        <view class="product-card">
+          <van-card price="{{item.price}}" desc="{{item.args}}" title="{{item.title}}" thumb="{{item.image1}} ">
+            <div slot="footer">
+              <view class="caozuo" style="display: none;">
+                <text class="subtract" style="border-right: 1px solid lightgray;">-</text>
+                <text class="singleCount">1</text>
+                <text class="add" style="border-left: 1px solid lightgray;"> + </text>
+              </view>
+              <view class="singleCount">X {{item.count}}</view>
+            </div>
+          </van-card>
+        </view>
+      </view>
+      <view class="other">
+        <van-cell-group>
+          <picker bindchange="bindPickerChange" data-index="{{idx}}" class="picker" value="{{columnsIndex}}" range="{{columns}}" range-key="text">
+            <van-cell title="配送方式" value="{{item.delivery}}" is-link />
+          </picker>
+          <van-cell title="订单备注" value="{{item.remark?item.tempRemarks:'无备注'}}" is-link data-index="{{idx}}" bindtap="markersEdit" />
+        </van-cell-group>
+      </view>
+    </view>
+  </view>
+  <view style="height: 40px;"></view>
+  <view class="remarks-edit">
+          <van-action-sheet show="{{show}}" title="订单备注" bind:close="onClose">
+            <view class="content">
+              <form bindsubmit="bindFormSubmit">
+                <textarea auto-focus placeholder="选填，需与商家协商一致" placeholder-style="color:gray;font-size: 15px;" name="textarea"></textarea>
+                <button form-type="submit">确定</button>
+              </form>
+            </view>
+          </van-action-sheet>
+        </view>
+  <view class="bottom">
+    <van-goods-action>
+      <view class="count"><text class="piece">共 {{buyCount}} 件</text>合计：<text class="price">￥ {{totalPrice}}</text></view>
+      <van-goods-action-button text="提交订单" color="linear-gradient(to right,#FFC41D,#FF9218)" bindtap="orderSubmit" />
+    </van-goods-action>
+  </view>
+
+  <!-- <view class="picker">
+    <van-popup show="{{show}}" round position="bottom">
+      <van-picker columns="{{columns}}" />
+    </van-popup>
+
+  </view> -->
+</view>

@@ -1,0 +1,153 @@
+<view class="about-container">
+  <view class="about-title">
+    XX商城在线购物演示系统（微信小程序，客户端）说明
+  </view>
+  <view class="about-statement" style="color: red;">
+    <text class="h2">声明：</text>
+    <text>本系统仅作交流学习使用，不用于任何商业盈利</text>
+  </view>
+  <view class="about-basic">
+    <view class="h1">基本信息</view>
+    <view>
+      <view>
+        <text class="h2">当前版本：</text>
+        <text>v1.1.0</text>
+      </view>
+      <view>
+        <text class="h2">原始版本：</text>
+        <text>v1.0.0</text>
+      </view>
+    </view>
+    <view>
+      <view class="h2">前端：</view>
+      <ul>
+        <li><text class="h2">技术栈：</text><text>原生微信小程序（wxml）</text></li>
+        <li><text class="h2">框架：</text><text>vant 1.10.13</text></li>
+        <li>
+        <text class="h2">源码地址：</text>
+        <ul>
+          <li><text class="h2">github：</text><text>https://github.com/heting791/mall-front-wxminipro</text><image src="/images/my/copy.png" data-src="https://github.com/heting791/mall-front-wxminipro" bindtap="goUrl" /></li>
+        <li><text class="h2">码云：</text><text>https://gitee.com/heying111/mall-front-wxminipro</text><image src="/images/my/copy.png" data-src="https://gitee.com/heying111/mall-front-wxminipro" bindtap="goUrl" /></li>
+        </ul>
+        </li>
+      </ul>
+    </view>
+    <view>
+      <view class="h2">后端：</view>
+      <ul>
+        <li><text class="h2">技术栈：</text><text>node.js</text></li>
+        <li><text class="h2">框架：</text><text>express</text></li>
+        <li>
+        <text class="h2">源码地址：</text>
+        <ul>
+          <li><text class="h2">github：</text><text>https://github.com/heting791/mall-rear</text><image src="/images/my/copy.png" data-src="https://github.com/heting791/mall-rear" bindtap="goUrl" /> 和 <text>https://github.com/heting791/mall-rear-judge</text><image src="/images/my/copy.png" data-src="https://github.com/heting791/mall-rear-judge" bindtap="goUrl" /></li>
+        <li><text class="h2">码云：</text><text>https://gitee.com/heying111/www</text><image src="/images/my/copy.png" data-src="https://gitee.com/heying111/www" bindtap="goUrl" /> 和 <text>https://gitee.com/heying111/mall-rear-judge</text><image src="/images/my/copy.png" data-src="https://gitee.com/heying111/mall-rear-judge" bindtap="goUrl" /></li>
+        </ul>
+        </li>
+      </ul>
+    </view>
+    <view>
+      <text class="h2">数据库：</text>
+      <text> MYSQL 5.7.26</text>
+    </view>
+    <view>
+      <text class="h2">后台管理系统：</text>
+      <text> 开发中，敬请期待~</text>
+    </view>
+  </view>
+  <view class="system-function">
+    <view class="h1">系统功能</view>
+    <view class="table">
+      <view class="th">
+        <text class="h2">分类</text>
+        <text class="h2">功能</text>
+        <text class="h2">备注</text>
+      </view>
+      <view class="cate">
+        <text class="cate-title" style="height: {{elementsHeight[0].height}}px;line-height: {{elementsHeight[0].height}}px;">用户</text>
+        <view class="func">
+          <text>微信授权登录</text>
+          <text>账号密码登录</text>
+          <text>注册（账号密码）</text>
+          <text>退出登录</text>
+          <text>切换账号</text>
+          <text>个人中心</text>
+        </view>
+        <text class="cate-title" style="height: {{elementsHeight[0].height}}px;line-height: {{elementsHeight[0].height}}px;"></text>
+      </view>
+      <view class="cate">
+        <text class="cate-title" style="height: {{elementsHeight[1].height}}px;line-height: {{elementsHeight[1].height}}px;">商品</text>
+        <view class="func">
+          <text>（按分类）浏览商品</text>
+          <text>查看商品详情</text>
+          <text>按关键字搜索商品</text>
+        </view>
+        <text class="cate-title" style="height: {{elementsHeight[1].height}}px;line-height: {{elementsHeight[1].height}}px;"></text>
+      </view>
+      <view class="cate">
+        <text class="cate-title" style="height: {{elementsHeight[2].height}}px;line-height: {{elementsHeight[2].height}}px;">收藏</text>
+        <view class="func">
+          <text>查看收藏商品列表</text>
+          <text>将商品加入收藏</text>
+          <text>取消收藏商品</text>
+        </view>
+        <text class="cate-title" style="height: {{elementsHeight[2].height}}px;line-height: {{elementsHeight[2].height}}px;"></text>
+      </view>
+      <view class="cate">
+        <text class="cate-title" style="height: {{elementsHeight[3].height}}px;line-height: {{elementsHeight[3].height}}px;">收货地址</text>
+        <view class="func">
+          <text>查看已保存的收货地址列表</text>
+          <text>新增收货地址</text>
+          <text>修改收货地址信息</text>
+          <text>删除收货地址</text>
+        </view>
+        <text class="cate-title" style="height: {{elementsHeight[3].height}}px;line-height: {{elementsHeight[3].height}}px;"></text>
+      </view>
+      <view class="cate">
+        <text class="cate-title" style="height: {{elementsHeight[4].height}}px;line-height: {{elementsHeight[4].height}}px;">购物车</text>
+        <view class="func">
+          <text>查看购物车商品列表</text>
+          <text>将商品加入购物车</text>
+          <text>修改购物车商品信息（参数、数量）</text>
+          <text>删除购物车商品</text>
+          <text>购买购物车中选中的商品</text>
+        </view>
+        <text class="cate-title" style="height: {{elementsHeight[4].height}}px;line-height: {{elementsHeight[4].height}}px;"></text>
+      </view>
+      <view class="cate">
+        <text class="cate-title" style="height: {{elementsHeight[5].height}}px;line-height: {{elementsHeight[5].height}}px;">订单</text>
+        <view class="func">
+          <text>查看订单列表</text>
+          <text>查看订单详情</text>
+          <text>修改订单信息（仅针对未支付的订单）</text>
+          <text>创建订单</text>
+          <text>修改订单状态</text>
+        </view>
+        <text class="cate-title" style="height: {{elementsHeight[5].height}}px;line-height: {{elementsHeight[5].height}}px;">
+        </text>
+      </view>
+      <view class="cate">
+        <text class="cate-title" style="height: {{elementsHeight[6].height}}px;line-height: {{elementsHeight[6].height}}px;">商品评价</text>
+        <view class="func">
+          <text>评价商品</text>
+          <text>查看商品评价列表（商品详情页）</text>
+        </view>
+        <text class="cate-title" style="height: {{elementsHeight[6].height}}px;line-height: {{elementsHeight[6].height}}px;">
+        </text>
+      </view>
+    </view>
+  </view>
+  <view class="notice">
+    <view class="h1">说明</view>
+    <view>
+      <ul>
+        <li>
+          1.关于创建订单的时间及订单编号规则：在商品详情页选择商品参数后点击“立即购买” 或 购物车页面选择商品后点击“去结算”按钮后 创建订单，订单状态为待支付，订单编号为 订单创建时间（普通日期时间格式）+ 用户名 + 商品编号，订单编号长度不固定
+        </li>
+        <li>
+          2.订单状态：待付款 -> 待发货 -> 待收货 -> 待评价 -> 已完成
+        </li>
+      </ul>
+    </view>
+  </view>
+</view>

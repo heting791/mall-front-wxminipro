@@ -1,0 +1,58 @@
+.index-container{
+  width: 95%;
+  margin: 10px auto;
+}
+.order-info-top .order-info-img,.order-info-top .order-info-text{
+  display: inline-block;
+  vertical-align: middle;
+}
+.order-info-top .order-info-text{
+  width: 78%;
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.order-info-top .order-info-text .order-info-text-title{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.order-info-top .order-info-text .order-info-text-options{
+  font-size: 12px;
+  color: gray;
+  margin-top: 5px;
+}
+
+.order-info-form{
+  margin-top: 10px;
+}
+
+.order-info-form .order-info-form-rate{
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+.order-info-form .order-info-form-rate,.order-info-form .order-info-form-content{
+  font-size: 14px;
+}
+
+.order-info-form .order-info-form-content{
+  border: 1px solid lightgray;
+  margin-bottom: 20px;
+}
+
+.order-info-form .order-info-form-file{
+  margin: 10px;
+}
+
+.submit{
+  width: 80%;
+  height: 30px;
+  line-height: 30px;
+  margin: 5px auto;
+  text-align: center;
+  color: white;
+  background-color: red;
+  border-radius: 20px;
+}

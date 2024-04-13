@@ -1,0 +1,269 @@
+swiper{
+  width: 100%;
+  height: calc(750rpx * (500 / 500));
+}
+swiper image{
+  width: 100%;
+  height: 100%;
+}
+.product-introduce-info{
+  width: 97%;
+  height: auto;
+  margin: 20px auto;
+}
+
+.options-list{
+  margin-top: 20px;
+}
+
+.options-list-inner-icon,.options-list-inner-list,.options-list-inner-text{
+  display: inline-block;
+  vertical-align: middle;
+}
+.options-list-inner-icon{
+  width: 10%;
+}
+
+.options-list-inner-list{
+  width: 58%;
+}
+
+.options-list-inner-text{
+  width: 30%;
+  font-size: 13px;
+}
+
+.options-list-inner-text text{
+  margin-right: 10px;
+}
+
+.product-introduce-info .cPrice{
+  color: red;
+  font-weight: bolder;
+  margin-right: 15px;
+  font-size: 18px;
+}
+
+.product-introduce-info .oPrice{
+  color: lightgray;
+  text-decoration: line-through;
+}
+
+.product-introduce-info .product-name{
+  margin: 5px 0;
+}
+.product-introduce-info .product-desc{
+  font-size: 12px;
+  margin-top: 10px;
+  color: gray;
+}
+
+.store-info{
+  font-size: 14px;
+  margin: 20px 0;
+}
+
+.store-head,.store-text{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.store-head{
+  width: 17%;
+}
+.store-text{
+  width: 80%;
+  line-height: 25px;
+}
+
+.store-text .store-text-address{
+  font-size: 11px;
+}
+
+.product-detail-info-inner-title{
+  margin: 10px 0 20px 8px;
+  
+}
+
+.product-detail-info-inner-title text,.product-detail-info-inner-title image{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.product-detail-info-inner-title text{
+  margin: 0 10px
+}
+
+.product-judge-info{
+  width: 95%;
+  margin: 30px auto;
+}
+
+.product-judge-info-top{
+  width: 100%;
+  height: 20px;
+}
+
+.product-judge-info-top .left-label{
+  display: inline-block;
+  width: 3px;
+  height: 100%;
+  background-color: red;
+  margin-right: 5px;
+}
+
+.product-judge-info-top text{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.product-judge-info-top text:last-child{
+  float: right;
+}
+
+.judge-list{
+  margin-top: 15px;
+}
+
+.judge-list-item{
+  margin: 20px 0;
+}
+
+.judge-item-head,.judge-item-top-right{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.judge-item-top{
+  margin-bottom: 10px;
+}
+
+.judge-item-top-right{
+  margin-left: 5px;
+  width: 80%;
+}
+.judge-item-top-right .judge-time{
+  color: gray;
+  font-size: 12px
+}
+
+.judge-item-top-right-userinfo,.judge-item-top-right-star{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.judge-item-top-right-userinfo{
+  width: 50%;
+}
+
+.judge-item-top-right-star{
+  width: 48%;
+}
+
+.options-select .content{
+  width: 90%;
+  margin: 10px auto;
+}
+
+.options-select .top-img,.options-select .top-title{
+  display: inline-block;
+  vertical-align: middle;
+}
+.options-select .top-title{
+  width: 70%;
+  font-size: 14px;
+  font-weight: bolder;
+  margin-left: 6px;
+}
+
+.options-select .top-title view{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.options-select .top-title text{
+  display: inline-block;
+  font-size: 17px;
+  color: red;
+  margin-top: 10px;
+}
+
+.options-select .action-options-list{
+  margin-top: 10px;
+}
+
+.action-options-list-item{
+  margin-bottom: 10px;
+}
+
+.action-options-list-item .option-name-title{
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.action-options-list .option-name-list text{
+  display: inline-block;
+  width: auto;
+  height: 20px;
+  border: 1px solid lightgray;
+  padding: 0 3px;
+  font-size: 12px;
+  margin-right: 15px;
+}
+
+.action-to-action{
+  width: 100%;
+  height: 35px;
+  color: white;
+  text-align: center;
+  line-height: 35px;
+  background-color: red;
+  margin-top: 20px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.quantity-title{
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+.quantity-caozuo{
+  float: right;
+}
+
+.quantity-caozuo text{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.judge-item-bottom{
+  line-height: 20px;
+  /*关键属性（必须有的）  */
+  display: -webkit-box;
+}
+
+.hide {
+  /*规定子元素的排列方向 */
+  -webkit-box-orient: vertical;
+  /*限制文本显示的行数  */
+  -webkit-line-clamp: 2;
+  /*实现多余的文字隐藏并用省略号来代表被隐藏的文字  */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-detail-info-inner-args li {
+  width: 45%;
+  vertical-align: top;
+  display: inline-block;
+  font-size: 13px;
+}

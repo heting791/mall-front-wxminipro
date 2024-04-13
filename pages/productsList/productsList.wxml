@@ -1,0 +1,82 @@
+<view class="search" style="display: none;">
+  <van-search v-model="value" placeholder="请输入搜索关键词" shape="round" />
+</view>
+
+<view class="choose" wx:if="{{subCateItem.products}}">
+  <view class="choose-common">
+    <view bindtap="synthesis">综合推荐</view>
+    <!-- <view>销量</view> -->
+    <view style="width: 55px;" bindtap="changePriceSort">
+      <text>价格</text>
+      <view class="price-sort">
+        <image src="/images/nav/up_on.png" style="margin-right: 5px;width: 10px;height: 10px;" wx:if="{{asc}}" />
+        <image src="/images/nav/up.png" style="margin-right: 5px;width: 10px;height: 10px;" wx:else />
+        <image src="/images/nav/down_on.png" style="display: block;width: 10px;height: 10px;" wx:if="{{desc}}" />
+        <image src="/images/nav/down.png" style="display: block;width: 10px;height: 10px;" wx:else />
+      </view>
+    </view>
+    <!-- <view>
+      <text>筛选</text>
+      <image src="/images/nav/choose.png" style="width: 15px;height: 15px;" />
+    </view> -->
+    <view class="list-mode" bindtap="changeListMode">
+      <image src="/images/nav/list.png" style="width: 17px;height: 17px;" wx:if="{{listDetails}}" />
+      <image src="/images/nav/list-details.png" style="width: 17px;height: 17px;" wx:else />
+    </view>
+  </view>
+  <view class="choose-other" style="white-space: nowrap;">
+    <scroll-view scroll-x="true">
+      <view wx:for="{{subCateItem.choose}}" wx:key="id">{{item}}
+        <van-icon name="arrow-down" size="10px" />
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<view style="display: none;">
+  <image src="{{testImage}}"></image>
+</view>
+<view class="products-list-container">
+  <view class="products-list-container-inner" wx:if="{{listDetails}}">
+    <van-empty wx:if="{{subCateItem.products.length < 1}}" description="暂无商品" />
+    <view class="products-list-item" wx:for="{{subCateItem.products}}" wx:key="id" data-item_id="{{item.id}}" bindtap="goToDetails">
+      <van-card price="{{item.price}}" title="{{item.title}}" thumb="{{item.image1}}">
+        <div slot="tags">
+          <!-- <van-tag plain type="primary" wx:for="{{item.tags}}" wx:key="id" wx:for-item="items" style="margin-right: 5px;">{{items}}</van-tag> -->
+          <van-tag plain type="primary">{{item.category}}</van-tag>
+        </div>
+        <div slot="footer">
+          <view class="footer" style="margin-top: -30px;" data-item_id="{{item.id}}" catchtap="toFaved">
+            <van-icon name="star-o" wx:if="{{!item.faved}}" size="18px" />
+            <van-icon name="/images/product-detail/star.png" wx:else size="18px" />
+          </view>
+        </div>
+      </van-card>
+    </view>
+    <view style="font-size: 13px;color: gray;text-align: center;padding-bottom: 10px;" wx:if="{{subCateItem.products.length >= 1}}">没有更多了</view>
+  </view>
+  <view class="products-list-container-inner1" wx:else>
+    <van-empty wx:if="{{subCateItem.products.length < 1}}" description="暂无商品" />
+    <view class="products-list-item" wx:for="{{subCateItem.products}}" wx:key="id" data-item_id="{{item.id}}" bindtap="goToDetails">
+      <view class="card-thumb">
+        <image src="{{item.image1}}" />
+      </view>
+      <view class="card-content">
+        <view class="title">{{item.title}}</view>
+        <view>
+          <van-tag plain type="primary">{{item.category}}</van-tag>
+        </view>
+        <view>
+          <view class="price">￥{{item.price}}</view>
+          <view class="card-footer">
+            <view class="footer" data-item_id="{{item.id}}" catchtap="toFaved">
+              <van-icon name="star-o" wx:if="{{!item.faved}}" size="18px" />
+              <van-icon name="/images/product-detail/star.png" wx:else size="18px" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="font-size: 13px;color: gray;text-align: center;padding-bottom: 10px;" wx:if="{{subCateItem.products.length >= 1}}">没有更多了</view>
+  </view>
+</view>

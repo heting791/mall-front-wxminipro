@@ -1,0 +1,4 @@
+<view>
+  <text class="conts {{isF?'hide':''}}">{{motto}}</text>
+  <text bindtap='aa'>{{isF ? '展开' : '收起'}}</text>
+</view>

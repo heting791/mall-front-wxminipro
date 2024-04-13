@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "我的收货地址",
+  "usingComponents": {
+    "van-goods-action": "/miniprogram_npm/@vant/weapp/goods-action/index",
+    "van-goods-action-button": "/miniprogram_npm/@vant/weapp/goods-action-button/index",
+    "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
+    "van-empty": "/miniprogram_npm/@vant/weapp/empty/index",
+    "van-sticky": "/miniprogram_npm/@vant/weapp/sticky/index"
+  }
+}

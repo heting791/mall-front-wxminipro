@@ -1,0 +1,174 @@
+<view class="index-container">
+  <van-sticky wx:if="{{createTabs}}">
+    <view class="tabs-conteiner">
+      <van-tabs active="{{active}}" bind:click="changeCurrent">
+        <van-tab wx:for="{{tabs}}" title="{{item.tab_name}}" wx:key="id" name="{{item.tab_name}}" />
+      </van-tabs>
+    </view>
+  </van-sticky>
+  <!-- <view style="height: 45px;"></view> -->
+  <scroll-view scroll-y="true" scroll-with-animation="true" scroll-into-view="{{toView}}" bindscroll="contentScroll" style="height: {{rollHeight}}px;" class="roll">
+    <view class="introduction tab-view" id="product-introduce">
+      <view class="swiper-container">
+        <swiper indicator-dots="true" indicator-active-color="#fff" circular style="height: 230px;">
+          <swiper-item>
+            <image src="{{product.image1}}" />
+          </swiper-item>
+        </swiper>
+      </view>
+      <view class="product-introduce-info">
+        <text class="cPrice">￥ {{product.price}}</text>
+        <text wx:if="{{product.oprice}}" class="oPrice">￥{{product.price}}</text>
+        <view class="product-name">{{product.title}} - <text style="color: red;font-size: large;font-weight: bolder;">{{product.id}}</text></view>
+        <view class="product-desc">
+          {{product.brand}} - {{product.category}}
+        </view>
+        <view class="options-list">
+          <view class="options-list-inner" bindtap="optionsOpen">
+            <view class="options-list-inner-icon">
+              <van-icon name="apps-o" size="23px" />
+            </view>
+            <view class="options-list-inner-list">
+              <image wx:for="{{product.options}}" src="{{item.image}}" style="width: 45px;height: 45px;margin-left: 8px;" wx:key="id" wx:if="{{index<3}}" />
+            </view>
+            <view class="options-list-inner-text">
+              <text>请选择款式</text>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="product-detail-info tab-view" id="product-details">
+      <view class="product-detail-info-inner">
+        <view class="product-detail-info-inner-title">
+          <van-divider content-position="center">宝贝详情</van-divider>
+        </view>
+        <view class="product-detail-info-inner-args">
+          <ul>
+            <li>
+              <text>品牌：</text>
+              <text>{{product.brand}}</text>
+            </li>
+            <li>
+              <text>商品编号：</text>
+              <text>{{product.idnumber}}</text>
+            </li>
+            <li wx:for="{{argsNameList}}" wx:key="index">
+              <text>{{item.key}}：</text>
+              <text>{{item.value}}</text>
+            </li>
+          </ul>
+        </view>
+        <image src="{{product.image1}}" style="margin-left: calc((100% - 320px) / 2);" />
+      </view>
+    </view>
+    <view class="product-judge-info tab-view" id="product-judge">
+      <view class="product-judge-info-top">
+        <view class="left-label"></view>
+        <text>宝贝评价 {{judgeLen}}</text>
+        <text></text>
+      </view>
+      <view class="judge-list">
+        <view class="judge-list-item" wx:for="{{product.judge}}" wx:key="id">
+          <view class="judge-item-top">
+            <view class="judge-item-head">
+              <image src="/images/my/default.png" style="width: 45px;height: 45px;" />
+            </view>
+            <view class="judge-item-top-right">
+              <view class="judge-item-top-right-userinfo">
+                <view class="username">{{item.username}}</view>
+                <view class="judge-time">普通用户</view>
+              </view>
+              <view class="judge-item-top-right-star">
+                <!-- <van-icon name="star" color="red" size="25px" /> -->
+                <van-rate readonly value="{{item.rate}}" />
+              </view>
+            </view>
+          </view>
+
+          <view class="judge-item-bottom {{item.expansionShow?'hide':''}}" style="font-size: 15px;">
+            {{item.content}}
+          </view>
+
+
+          <view wx:if="{{item.overLength}}" style="text-align: center;" bindtap="expansion" data-item_idx="{{index}}">
+            <van-icon wx:if="{{item.expansionShow}}" name="arrow-down" color="blue" />
+            <van-icon wx:else name="arrow-up" color="blue" />
+            <text style="color: blue; font-size: 13px;"> {{item.expansionShow?'展开':'收起'}}</text>
+          </view>
+
+          <view class="judge-item-images" style="margin-top: 20px;">
+            <image wx:for="{{item.images}}" wx:key="index" wx:for-item="items" src="{{items}}"style="width: 100px;height: 100px;margin-left: 10px;" />
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+    <view style="height: 30px;"></view>
+  </scroll-view>
+
+  <van-goods-action>
+    <van-goods-action-icon icon="chat-o" text="客服" bindtap="toChat" />
+    <navigator open-type="switchTab" url="/pages/cart/cart">
+      <van-goods-action-icon icon="cart-o" text="购物车" />
+    </navigator>
+    <van-goods-action-icon wx:if="{{product.faved}}" icon='/images/product-detail/star.png' text="收藏" bindtap="toFaved" />
+    <van-goods-action-icon wx:else icon='star-o' text="收藏" bindtap="toFaved" />
+    <van-goods-action-button text="加入购物车" color="linear-gradient(to right,#FFC41D,#FF9218)" bindtap="addCart" />
+    <!-- <navigator url="/pages/orderConfirm/orderConfirm"> -->
+    <van-goods-action-button text="立即购买" color="linear-gradient(to right,#FC5332,#F01926)" bindtap="orderConfirm" />
+    <!-- </navigator> -->
+  </van-goods-action>
+
+  <view class="options-select">
+    <van-action-sheet show="{{show}}">
+      <view class="content">
+        <view class="content-title" style="margin-bottom: 10px;text-align: right;" bindtap="optionsClose">X</view>
+        <view class="top">
+          <view class="top-img">
+            <image src="{{checkedImage}} " style="width: 80px;height: 80px;border-radius: 10px;" />
+          </view>
+          <view class="top-title">
+            <view>{{product.title}}</view>
+            <text>￥ {{checkedPrice}}</text>
+          </view>
+        </view>
+        <view class="action-options-list">
+          <view class="action-options-list-item" wx:for="{{optionsList}}" wx:key="id" wx:for-index="idx">
+            <view class="option-name">
+              <text class="option-name-title">{{item.name}}</text>
+              <view class="option-name-list">
+                <text wx:for="{{item.lists}}" wx:key="id" wx:for-item="items" bindtap="changeOption" data-key="{{item.name}}" data-value="{{items}}" data-index="{{idx}}" style="border: {{items==item.checked?'1px solid red':'1px solid lightgray'}};color: {{items==item.checked?'red':''}};">{{items}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="quantity">
+          <text class="quantity-title">购买数量</text>
+          <view class="quantity-caozuo">
+            <text style="font-weight: bolder;color: {{subtractDisabled?'#d2d2d2':''}};background-color: {{subtractDisabled?'#FBFBFB':''}};border-color: {{subtractDisabled?'#eee':''}};" bindtap="subtract">-</text>
+            <text style="margin: 0 3px;width:30px;">{{buyCount}}</text>
+            <text style="font-weight: bolder;color: {{addCountDisabled?'#d2d2d2':''}};background-color: {{addCountDisabled?'#FBFBFB':''}};border-color: {{addCountDisabled?'#eee':''}};" bindtap="addCount">+</text>
+          </view>
+        </view>
+        <!-- <van-goods-action> -->
+        <view style="margin-top: 10px;">
+          <van-goods-action-button text="加入购物车" color="linear-gradient(to right,#FFC41D,#FF9218)" style="width: 49.9%;display: inline-block;border-radius: 20px 0 0 20px;" bindtap="addCart" />
+          <van-goods-action-button text="立即购买" color="linear-gradient(to right,#FC5332,#F01926)" style="width: 49.9%;display: inline-block;border-radius: 0 20px 20px 0;" bindtap="orderConfirm" />
+          <!-- </van-goods-action> -->
+        </view>
+      </view>
+    </van-action-sheet>
+  </view>
+
+  <view>
+    <login loginShow="{{loginShow}}" bindloginClose="loginClose" bindgoRegister="goRegister" bindlogined="logined"></login>
+  </view>
+
+  <view>
+    <register registerShow="{{registerShow}}" bindregisterClose="registerClose" bindgoLogin="goLogin"></register>
+  </view>
+
+</view>

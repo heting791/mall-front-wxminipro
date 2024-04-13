@@ -1,0 +1,70 @@
+<van-sticky>
+  <view class="search-div">
+    <form bindsubmit="goSearch">
+      <image src="../../images/index/search.png" style="width: 70rpx;height: 70rpx;" />
+      <input type="text" placeholder="输入关键词搜索" value="{{keyword}}" name="keyword" />
+      <!-- <van-button type="submit">搜索</van-button> -->
+      <button formType="submit">提交</button>
+    </form>
+  </view>
+</van-sticky>
+<view class="swiper-container" style="margin-top: 25rpx;">
+  <swiper class="swiper1" indicator-dots="true" indicator-active-color="#fff" autoplay circular>
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <!-- <navigator url="{{item.link}}"> -->
+      <image mode="aspectFill" src="{{item.src}}" data-link="{{item.link}}" bindtap="bannerClick" />
+      <!-- </navigator> -->
+    </swiper-item>
+  </swiper>
+</view>
+<view class="category-container">
+  <view class="category-box">
+    <view wx:for="{{categories}}" wx:key="id" bindtap="categoryClick" data-category_id="{{item.id}}" class="category-inner-box">
+      <image src="{{item.icon}}" style="width: 90rpx;height: 90rpx;" />
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="notice-box" wx:if="{{noticeList}}">
+  <swiper class="notice-swiper" vertical autoplay circular interval="19500">
+    <swiper-item wx:for="{{noticeList}}" wx:key="id">
+      <van-notice-bar scrollable="true" text="{{item.title}}" speed="40" mode="link" left-icon="volume-o" background-color="white" bind:click="clickNotice"></van-notice-bar>
+    </swiper-item>
+  </swiper>
+</view>
+
+<view class="floor-container">
+  <view class="floor-box">
+    <view class="floor-item-box" wx:for="{{floor}}" wx:key="id">
+      <view class="floor-item-box-title">
+        <image src="{{item.icon}}" style="max-width: 45rpx;max-height: 45rpx;" />
+        <text>{{item.title}}</text>
+      </view>
+      <view class="floor-item-box-list">
+        <view wx:for="{{item.lists}}" wx:for-item="items" class="floor-item-box-list-item" wx:key="id">
+          <image src="{{items.index_img}}" style="width: 150rpx;height: 150rpx;" />
+          <view class="miaosha" wx:if="{{item.title == '限时秒杀'}}">
+            <image src="../../images/index/miaosha.png" style="width: 40rpx;height: 40rpx;" />
+            <text class="miaosha-price">￥{{items.cPrice}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="products-list-container">
+  <view class="product-item" wx:for="{{pageData}}" wx:key="id" data-item_id="{{item.id}}" bindtap="goToDetails">
+    <view class="product-image">
+      <image src="{{item.image}}" style="width: 100%;height: 180px;border-radius: 25rpx;" />
+    </view>
+    <view class="product-text-box">
+      <view class="product-text-box-name"><text style="color: blue;font-size: large;font-weight: bolder;">{{item.id}}</text> - {{item.title}}</view>
+      <view class="product-text-box-oPrice">{{item.oprice}}</view>
+      <text class="product-text-box-cPrice">￥{{item.price}}</text>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{reachBottom}}" style="font-size: 12px;text-align: center;margin-bottom: 15px;color: gray;">到底啦~</view>

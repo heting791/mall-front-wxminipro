@@ -1,0 +1,37 @@
+<!--pages/components/register/register.wxml-->
+<view class="register">
+  <van-action-sheet show="{{registerShow}}">
+    <view class="content">
+      <view>
+        <view class="content-title">
+          <text>用户注册</text>
+        </view>
+        <view class="content-close" bindtap="registerClose">X</view>
+      </view>
+      <form bindsubmit="registerCheck">
+        <view class="form-inner">
+          <view class="form-item">
+            <text>用户名：</text>
+            <input type="text" name="username" value="{{username}}" maxlength="10" />
+          </view>
+          <view class="form-item">
+            <text>密码：</text>
+            <input type="text" name="pwd" value="{{pwd}}" maxlength="30" />
+          </view>
+          <view class="form-item">
+            <text>确认密码：</text>
+            <input type="text" name="cpwd" value="{{cpwd}}" maxlength="30" />
+          </view>
+        </view>
+        <view class="go-register" bindtap="goLogin">
+          <text>已有账号？去登录 ></text>
+        </view>
+        <!-- <van-goods-action> -->
+        <view style="margin-top: 10px;" class="submit">
+          <button formType="submit">注册</button>
+          <!-- </van-goods-action> -->
+        </view>
+      </form>
+    </view>
+  </van-action-sheet>
+</view>

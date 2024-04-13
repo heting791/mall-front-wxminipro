@@ -1,0 +1,66 @@
+/* pages/components/login/login.wxss */
+.content-title,.content-close {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 10px;
+}
+
+.content-title {
+  width: 93%;
+  font-weight: bolder;
+  font-size: 17px;
+  text-align: center;
+}
+
+.form-inner {
+  width: 95%;
+  height: auto;
+  margin: 20px auto;
+  background-color: white;
+}
+
+.index-container {
+  background-color: whitesmoke;
+}
+
+.form-item text,
+.form-item input {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.form-item input {
+  width: 68%;
+}
+
+.form-item text {
+  width: 30%;
+}
+
+.form-item {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+}
+
+.go-register {
+    font-size: 14px;
+    color: blue;
+    float: right;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.submit button{
+  width: 90%;
+  height: 40px;
+  line-height: 40px;
+  margin: 20px auto;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  border: 1px blue solid;
+  border-radius: 20px;
+}

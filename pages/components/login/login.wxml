@@ -1,0 +1,32 @@
+<view class="login">
+  <van-action-sheet show="{{loginShow}}">
+    <view class="content">
+      <view>
+        <view class="content-title">
+          <text>用户登录</text>
+        </view>
+        <view class="content-close" bindtap="loginClose">X</view>
+      </view>
+      <form bindsubmit="loginCheck">
+        <view class="form-inner">
+          <view class="form-item">
+            <text>用户名：</text>
+            <input type="text" name="username" value="{{username}}" maxlength="10" />
+          </view>
+          <view class="form-item">
+            <text>密码：</text>
+            <input type="text" name="pwd" value="{{pwd}}" maxlength="30" />
+          </view>
+        </view>
+        <view class="go-register" bindtap="goRegister">
+          <text>没有账号？去注册 ></text>
+        </view>
+        <!-- <van-goods-action> -->
+        <view style="margin-top: 10px;" class="submit">
+          <button formType="submit">登录</button>
+          <!-- </van-goods-action> -->
+        </view>
+      </form>
+    </view>
+  </van-action-sheet>
+</view>

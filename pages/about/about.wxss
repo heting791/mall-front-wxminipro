@@ -1,0 +1,80 @@
+.about-container {
+  width: 95%;
+  margin: 10px auto;
+}
+
+.about-container .h1 {
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.about-container .h2 {
+  font-weight: bolder;
+}
+
+.about-container .about-title {
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.about-container .about-statement {
+  text-align: center;
+  margin: 10px auto;
+}
+
+.about-container .about-basic {
+  line-height: 35px;
+}
+
+.about-container ul li {
+  margin-left: 30rpx;
+  display: block;
+}
+
+.about-container ul li image {
+  width: 18px;
+  height: 18px;
+  margin-left: 20rpx;
+  line-height: 25px;
+}
+
+.about-container .system-function .h1{
+  margin: 20rpx 0;
+}
+
+.about-container .system-function .table {
+  border: 1px solid gray;
+}
+
+.about-container .system-function .table text {
+  display: block;
+  border: 1px solid gray;
+  margin: 5rpx;
+  padding: 3rpx;
+  text-align: center;
+}
+.about-container .system-function .table .cate .cate-title, .about-container .system-function .table .cate .func {
+  display: inline-block;
+  vertical-align: top;
+  width: 31%;
+}
+
+.about-container .system-function .table .th text {
+  display: inline-block;
+  vertical-align: top;
+  width: calc((100% - 52rpx) / 3);
+}
+
+.about-container .system-function .table .cate .func {
+  margin-right: 16rpx;
+}
+
+.about-container .system-function .table .cate .func text {
+  width: 100%;
+}
+
+.about-container .notice {
+  line-height: 30px;
+  margin: 20px 0;
+}

@@ -1,0 +1,139 @@
+<view class="personal-info">
+  <view class="head">
+    <image src="../../images/my/default.png" style="width: 55px;height: 55px;" />
+  </view>
+  <view class="username" wx:if="{{logined}}">
+    <view>{{user.username}}</view>
+    <text bindtap="toggleUser" wx:if="{{!wxLogin}}">切换账号 ></text>
+    <text bindtap="toggleUser" wx:if="{{wxLogin}}" style="color: black;">今天也是元气满满的一天~</text>
+    <!-- <text bindtap="loginOut">退出登录 ></text> -->
+  </view>
+  <view class="username" wx:else>
+    <view>未登录</view>
+    <text bindtap="loginOpen">登录 ></text>
+    <text bindtap="registerOpen">注册 ></text>
+  </view>
+</view>
+
+<view class="my-operation" style="display: none;">
+  <van-grid clickable square>
+    <van-grid-item dot wx:if="{{favedDot}}" icon="star-o" text="收藏" bindtap="toFavedList"></van-grid-item>
+    <van-grid-item wx:else icon="star-o" text="收藏" bindtap="toFavedList"></van-grid-item>
+    <van-grid-item icon="success" text="订阅店铺"></van-grid-item>
+    <van-grid-item icon="browsing-history-o" text="足迹"></van-grid-item>
+    <van-grid-item icon="paid" text="零钱"></van-grid-item>
+  </van-grid>
+</view>
+
+<view class="my-order">
+  <view class="order-all" bindtap="toAllOrder">
+    <van-cell title="我的订单" value="更多" is-link />
+  </view>
+  <van-grid clickable square column-num="5">
+    <van-grid-item wx:if="{{noPayCount}}" icon="balance-list-o" text="待付款" badge="{{noPayCount}}" data-way="pay" style="width: 50px;" bindtap="goOrderList"></van-grid-item>
+    <van-grid-item wx:else icon="balance-list-o" text="待付款" data-way="pay" bindtap="goOrderList" style="width: 50px;"></van-grid-item>
+
+    <van-grid-item wx:if="{{noDeliverCount}}" icon="logistics" badge="{{noDeliverCount}}" text="待发货" data-way="delivery" bindtap="goOrderList"></van-grid-item>
+    <van-grid-item wx:else icon="logistics" text="待发货" data-way="delivery" bindtap="goOrderList"></van-grid-item>
+
+    <van-grid-item icon="certificate" wx:if="{{noReceiveCount}}" badge="{{noReceiveCount}}" data-way="receive" bindtap="goOrderList" text="待收货"></van-grid-item>
+    <van-grid-item icon="certificate" wx:else data-way="receive" bindtap="goOrderList" text="待收货"></van-grid-item>
+
+    <van-grid-item icon="flower-o" wx:if="{{noJudgeCount}}" badge="{{noJudgeCount}}" data-way="judge" bindtap="goOrderList" text="待评价"></van-grid-item>
+    <van-grid-item icon="flower-o" wx:else data-way="judge" bindtap="goOrderList" text="待评价"></van-grid-item>
+
+    <van-grid-item icon="after-sale" text="退款/售后"></van-grid-item>
+  </van-grid>
+
+  <view class="function">
+    <!-- <navigator url="/pages/deliveryAddressList/deliveryAddressList"> -->
+    <van-cell title="我的收货地址" is-link bindtap="goAddressList" />
+    <!-- </navigator> -->
+    <van-cell title="我的收藏" is-link bindtap="toFavedList" />
+    <navigator url="/pages/about/about">
+      <van-cell title="关于我们" is-link />
+    </navigator>
+  </view>
+  <view style="width: 60%;margin: 20px auto;" wx:if="{{logined}}">
+    <button type="primary" plain="true" bindtap="loginOut" style="height: 35px;line-height: 35px;font-size: 15px;">退出登录</button>
+  </view>
+  <view style="width: 45%;margin: 20px auto;font-size: 12px;color: gray;">技术支持：gitee.com/heying111</view>
+  <view class="options-select">
+    <van-action-sheet show="{{loginShow}}">
+      <view class="content">
+        <view>
+          <view class="content-title">
+            <text>用户登录</text>
+          </view>
+          <view class="content-close" bindtap="loginClose">X</view>
+        </view>
+        <form bindsubmit="loginCheck">
+          <view class="form-inner">
+            <view class="form-item">
+              <text>用户名：</text>
+              <input type="text" name="username" value="{{username}}" maxlength="10" />
+            </view>
+            <view class="form-item">
+              <text>密码：</text>
+              <input type="text" name="pwd" value="{{pwd}}" maxlength="10" />
+            </view>
+          </view>
+          <view class="go-register" bindtap="goRegister">
+            <text>没有账号？去注册 ></text>
+          </view>
+          <!-- <van-goods-action> -->
+          <view style="margin-top: 10px;" class="submit">
+            <button formType="submit">登录</button>
+            <!-- </van-goods-action> -->
+          </view>
+        </form>
+      </view>
+    </van-action-sheet>
+  </view>
+  <view class="options-select">
+    <van-action-sheet show="{{registerShow}}">
+      <view class="content">
+        <view>
+          <view class="content-title">
+            <text>用户注册</text>
+          </view>
+          <view class="content-close" bindtap="registerClose">X</view>
+        </view>
+        <form bindsubmit="registerCheck">
+          <view class="form-inner">
+            <view class="form-item">
+              <text>用户名：</text>
+              <input type="text" name="username" value="{{username}}" maxlength="10" />
+            </view>
+            <view class="form-item">
+              <text>密码：</text>
+              <input type="text" name="pwd" value="{{pwd}}" maxlength="10" />
+            </view>
+            <view class="form-item">
+              <text>确认密码：</text>
+              <input type="text" name="cpwd" value="{{cpwd}}" maxlength="10" />
+            </view>
+          </view>
+          <view class="go-register" bindtap="goLogin">
+            <text>已有账号？去登录 ></text>
+          </view>
+          <!-- <van-goods-action> -->
+          <view style="margin-top: 10px;" class="submit">
+            <button formType="submit">注册</button>
+            <!-- </van-goods-action> -->
+          </view>
+        </form>
+      </view>
+    </van-action-sheet>
+  </view>
+
+  <view>
+    <login loginShow="{{loginShow}}" bindloginClose="loginClose" bindgoRegister="goRegister" bindlogined="logined"></login>
+  </view>
+
+  <view>
+    <register registerShow="{{registerShow}}" bindregisterClose="registerClose" bindgoLogin="goLogin"></register>
+  </view>
+
+
+</view>

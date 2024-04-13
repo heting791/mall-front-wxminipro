@@ -1,0 +1,82 @@
+.manage{
+  width: 90%;
+  margin: 0 auto;
+  font-size: 13px;
+  color: red;
+  text-align: right;
+}
+
+.address-list{
+  width: 100%;
+  margin: 10px auto;
+  background-color: whitesmoke;
+  padding-top: 3px;
+}
+
+.address-list-item{
+  width: 97%;
+  margin: 10px auto;
+  border-radius: 10px;
+  background-color: white;
+  padding-left: 5px;
+}
+
+.address-list-item-main{
+  width: 100%;
+  height: auto;
+  font-size: 15px;
+  padding: 5px 0;
+}
+
+.address-icon,.address-info,.address-to-edit{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.address-icon,.address-to-edit{
+  width: 8%;
+  margin-left: 7px;
+}
+
+.address-info{
+  width: 78%;
+}
+
+.address-info .name{
+  font-weight: bolder;
+  margin-right: 10px;
+}
+
+.address-info .phone{
+  font-size: 13px;
+  color: gray;
+}
+
+.address-info .address{
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.address-list-item-manage{
+  padding: 5px 0;
+  border-top: 1px solid black;
+}
+.address-list-item-manage .default,.address-list-item-manage .to-delete{
+  display: inline-block;
+  font-size: 14px;
+}
+
+.default-icon,.default text{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.default text{
+  margin-left: 5px;
+}
+
+.address-list-item-manage .to-delete{
+  float: right;
+  margin-right: 5px;
+  line-height: 20px;
+}

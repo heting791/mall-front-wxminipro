@@ -1,0 +1,91 @@
+.out-container{
+  background-color: whitesmoke;
+}
+
+.order-info {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.store-info {
+  margin-top: 20px;
+}
+
+.store-info .store-head,
+.store-info .store-text {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.store-info .store-text {
+  margin-left: 10px;
+  font-size: 15px;
+  line-height: 30px;
+}
+
+.actual-payment{
+  color: red;
+}
+
+button{
+  width: auto;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 15px;
+  color: red;
+  border-radius: 20px;
+  border: 1px solid red;
+  float: right;
+}
+
+.process{
+  padding-top: 10px;
+}
+
+.process-inner{
+  width: 95%;
+  height: 50px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  font-size: 13px;
+  padding: 10px;
+  color: gray;
+}
+
+.process-line,.process-info{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.process-info{
+  width: 90%;
+  margin-left: 30px;
+}
+
+.process-line{
+  position: relative;
+}
+
+.process-line text{
+  display: inline-block;
+  border: 2px solid red;
+  width: 8px;
+  height: 8px;
+  border-radius: 50px;
+  position: absolute;
+  left: 5px;
+  top: 42px;
+}
+
+.process-line image{
+  position: absolute;
+}
+
+.process-info-title{
+  font-size: 18px;
+  font-weight: bolder;
+  margin: 4px 0;
+  color: black;
+}

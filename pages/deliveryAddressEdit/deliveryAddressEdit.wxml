@@ -1,0 +1,79 @@
+<view class="index-container">
+  <form bindsubmit="formSubmit">
+    <view class="form-inner">
+      <input type="text" name="id" value="{{id}}" />
+      <view class="form-item">
+        <text>收货人</text>
+        <input type="text" name="person" value="{{person}}" maxlength="10" />
+      </view>
+      <view class="form-item">
+        <text>手机号码</text>
+        <input type="number" name="phone" style="width: 55%;" maxlength="11" value="{{phone}}" />
+        <text style="width: 11%;font-size: 13px;" bindtap="onshowPhone">+{{phonearea}}</text>
+        <input type="text" name="phonearea" value="{{phonearea}}" style="display: none;" />
+        <van-icon name="arrow" size="15px" bindtap="onshowPhone" />
+      </view>
+      <view class="form-item">
+        <picker mode="region" name="area" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <text>所在地区</text>
+          <view class="area" style="font-size: 13px;text-align: right;"><text style="width: 100%;" wx:if="{{tempRegion}}">{{tempRegion[0]}}，{{tempRegion[1]}}，{{tempRegion[2]}}</text></view>
+          <van-icon name="location" color="orange" size="20px" style="margin-left: 2%;" />
+        </picker>
+      </view>
+      <view class="form-item detailed">
+        <text>详细地址</text>
+        <view class="detailed-textarea">
+          <textarea name="detailed" style="width: 100%;height: 100%;line-height: 5px;" value="{{detailed}}"></textarea>
+        </view>
+      </view>
+    </view>
+
+    <view class="tags">
+      <text style="margin-right: 20px;">标签</text>
+      <van-tag size="large" type="primary" wx:if="{{tag=='home'}}" color="orange">家</van-tag>
+      <van-tag size="large" color="#dcdcdc" wx:else text-color="black" data-tag="home" bindtap="changeTag">家</van-tag>
+      <text style="display: inline-block;margin: 0 10px;"></text>
+      <van-tag size="large" type="primary" wx:if="{{tag=='company'}}" color="orange">公司</van-tag>
+      <van-tag size="large" color="#dcdcdc" wx:else text-color="black" data-tag="company" bindtap="changeTag">公司</van-tag>
+      <input type="text" name="tag" value="{{tag}}" style="display: none;" />
+    </view>
+
+    <view class="default">
+      <text>设为默认收货地址</text>
+      <view class="default-switch">
+        <switch checked="{{defaultFlag}}" bindchange="switch1Change" color="orange" name="default" />
+        <!-- <van-switch checked="{{checked}}" name="default" active-color="orange" /> -->
+      </view>
+    </view>
+    <input type="text" name="orderChecked" value="{{orderChecked}}" style="display: none;" />
+    <view class="submit">
+      <button formType="submit">提交</button>
+    </view>
+
+    <view class="area-phone">
+      <van-popup show="{{show}}">
+        <view class="choose" style="width: 250px;padding-left: 10px;">
+          <radio-group bindchange="radioChange">
+            <label wx:for="{{areaPhone}}" wx:key="value" value="{{item.value}}">
+              <view class="label-left">{{item.area}} +{{item.phone}}</view>
+              <view class="label-radio">
+                <radio value="{{item.value}}" checked="{{item.checked}}" />
+              </view>
+            </label>
+          </radio-group>
+        </view>
+        <view style="height: 10px;"></view>
+        <view class="bottom">
+          <text bindtap="onCancel">取消</text>
+          <!-- <text>确定</text> -->
+        </view>
+      </van-popup>
+    </view>
+
+
+    <!-- <van-popup show="{{show}}" round position="bottom">
+      <van-area title="所在地区" area-list="{{areaList}}" bind:cancel="onCancel" bind:change="onChange" />
+    </van-popup> -->
+
+  </form>
+</view>

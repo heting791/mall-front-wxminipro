@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@vant/area-data": "^1.4.0",
+    "@vant/weapp": "^1.10.13",
+    "apifm-wxapi": "^3.61.0",
+    "miniprogram-sm-crypto": "^0.3.12",
+    "weui-miniprogram": "^1.2.7"
+  },
+  "name": "miniprogram-1",
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

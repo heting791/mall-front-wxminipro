@@ -1,0 +1,95 @@
+<view class="cart-container">
+  <view class="cart-edit" wx:if="{{cartList.length}}">
+    <view id="edit" wx:if="{{!edit}}" bindtap="editOpen">编辑</view>
+    <view id="complate" wx:else bindtap="editClose">完成</view>
+  </view>
+  <van-dialog id="van-dialog" />
+  <view class="cart-list-container">
+    <view class="cart-item" wx:for="{{cartList}}" wx:key="id">
+      <view class="check" bindtap="changeChecked" data-item_idx="{{index}}">
+        <image src="{{item.checked?'../../images/cart/checked.png':'../../images/cart/circle.png'}}" class="no-checked" />
+      </view>
+      <view class="product-card" bindtap="goToDetails" data-item_id="{{item.productid}}">
+        <van-card price="{{item.checkedPrice}}" title="{{item.title}}" thumb="{{item.checkedImage}}">
+          <div slot="price-top">
+            <view catchtap="optionsOpen" data-item_idx="{{index}}">{{item.checkedOpList1}}
+              <van-icon name="arrow-down"></van-icon>
+            </view>
+            <view data-item_idx="{{index}}" style="display: none;">{{item.checkedOpList1}}</view>
+          </div>
+          <div slot="footer">
+            <text style="font-weight: bolder;font-size: 16px;color: {{item.subtractDisabled?'#d2d2d2':''}};background-color: {{item.subtractDisabled?'#FBFBFB':''}};border-color: {{item.subtractDisabled?'#eee':''}};" data-item_idx="{{index}}" catchtap="subtract"> - </text>
+            <van-button type="default" size="mini">{{item.count}}</van-button>
+            <text style="font-weight: bolder;font-size: 16px;color: {{item.addCountDisabled?'#d2d2d2':''}};background-color: {{item.addCountDisabled?'#FBFBFB':''}};border-color: {{item.addCountDisabled?'#eee':''}};" data-item_idx="{{index}}" catchtap="addCount"> + </text>
+          </div>
+        </van-card>
+      </view>
+      <view class="to-delete" wx:if="{{edit}}" style="display: inline-block;margin-left: 3px;" bindtap="toDelete" data-item_idx="{{index}}">
+        <van-icon name="delete" color="red" />
+      </view>
+    </view>
+    <van-empty wx:if="{{!cartList.length}}" description="暂无商品" />
+    <view style="width: 50%;margin: 20px auto;" wx:if="{{noLogin}}">
+    <button type="primary" plain="true" bindtap="goLogin" style="height: 40px;line-height: 40px;font-size: 17px;">去登录</button>
+  </view>
+  <view style="width: 50%;margin: 20px auto;" wx:if="{{!noLogin && !cartList.length}}">
+    <button type="primary" plain="true" bindtap="goShopping" style="height: 40px;line-height: 40px;font-size: 17px;">去加购</button>
+  </view>
+  </view>
+</view>
+<view class="occupied"></view>
+
+<view class="bottom" wx:if="{{cartList.length}}">
+  <van-goods-action>
+    <view class="count">
+      <view class="all" style="display: inline-block;" bindtap="changeAll">
+        <van-icon wx:if="{{allChecked}}" name="checked" color="red" size="25px" />
+        <van-icon wx:else name="circle" color="lightgray" size="25px" /><text> 全选</text>
+      </view>
+      <text style="display: inline-block;width: 20px;"></text>
+      合计：<text class="price">￥{{totalPrice}}</text>
+    </view>
+    <van-goods-action-button text="去结算（{{checkedCount}}）" color="linear-gradient(to right,#FFC41D,#FF9218)" bindtap="orderConfirm" />
+  </van-goods-action>
+</view>
+
+<view class="options-select">
+  <van-action-sheet show="{{show}}">
+    <view class="content">
+      <view class="content-title" style="margin-bottom: 10px;text-align: right;" bindtap="optionsClose">X</view>
+      <view class="top">
+        <view class="top-img">
+          <image src="{{tempCheckedImage}} " style="width: 80px;height: 80px;border-radius: 10px;" />
+        </view>
+        <view class="top-title">
+          <view>{{checkedName}}</view>
+          <text>￥ {{tempCheckedPrice}}</text>
+        </view>
+      </view>
+      <view class="action-options-list">
+        <view class="action-options-list-item" wx:for="{{optionList}}" wx:key="id" wx:for-index="idx">
+          <view class="option-name">
+            <text class="option-name-title">{{item.name}}</text>
+            <view class="option-name-list">
+              <text wx:for="{{item.lists}}" wx:key="id" wx:for-item="items" bindtap="changeOption" data-key="{{item.field}}" data-value="{{items}}" data-index="{{idx}}" style="border: {{items==item.checked?'1px solid red':'1px solid lightgray'}};color: {{items==item.checked?'red':''}};">{{items}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <van-goods-action> -->
+      <view style="margin-top: 10px;">
+        <van-goods-action-button text="确定" color="linear-gradient(to right,#FFC41D,#FF9218)" style="width: 100%;display: inline-block;border-radius: 20px 0 0 20px;" bindtap="optionsConfirm" />
+      </view>
+      <!-- </van-goods-action> -->
+    </view>
+  </van-action-sheet>
+
+  <view>
+    <login loginShow="{{loginShow}}" bindloginClose="loginClose" bindgoRegister="goRegister" bindlogined="logined"></login>
+  </view>
+
+  <view>
+    <register registerShow="{{registerShow}}" bindregisterClose="registerClose" bindgoLogin="goLogin"></register>
+  </view>
+
+</view>

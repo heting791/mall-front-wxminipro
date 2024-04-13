@@ -1,0 +1,35 @@
+<view class="index-container">
+  <view class="order-info">
+    <view class="order-info-top">
+      <view class="order-info-img">
+        <image src="{{order.image1}}" style="width: 55px;height: 55px;border-radius: 10px;" />
+      </view>
+      <view class="order-info-text">
+        <view class="order-info-text-title">{{order.title}}</view>
+        <view class="order-info-text-options">
+          {{order.args}}
+        </view>
+      </view>
+    </view>
+    <view class="order-info-form">
+      <form bindsubmit="formSubmit">
+        <view class="order-info-form-rate">
+          <input type="text" name="orderid" value="{{order.id}}" style="" />
+          <text>综合评分</text><text style="display: inline-block;width: 15px;height: 20px;"></text>
+          <van-rate value="{{value}}" name="star" bind:change="rateChange" />
+        </view>
+        <view class="order-info-form-content">
+          <textarea style="padding: 10px;width: calc(100% - 20px);font-size: 14px;height: 100px;" placeholder="评价成功后可在该商品的详情页看到您的评价" name="content"></textarea>
+          <view class="order-info-form-file">
+            <view class="order-info-form-file-inner">
+              <van-uploader multiple :deletable="false" fileList="{{fileList}}"  bind:after-read="fileChange" bind:delete="deleteFile" :capture="camera" :max-count="9" :max-size="1024 * 1024" :image-fit='fill' />
+            </view>
+          </view>
+        </view>
+        <!-- <image wx:for="{{fileList}}" wx:key="index" src="{{item.url}}" /> -->
+        <button formType="submit" class="submit">提交评价</button>
+      </form>
+
+    </view>
+  </view>
+</view>

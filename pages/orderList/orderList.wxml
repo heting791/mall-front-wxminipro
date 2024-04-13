@@ -1,0 +1,42 @@
+<view class="order-info-container">
+  <view class="order-info-item" style="margin-bottom: 10px;" wx:if="{{wayOrderList.length}}" wx:for="{{wayOrderList}}" wx:key="id" wx:for-index="idx">
+    <view class="order-info">
+      <view bindtap="toOrderDetails" data-item_id="{{item.id}}">
+        <!-- <view class="store-info">
+          <view class="store-head">
+            <image wx:if="{{item.order.product.store.head}}" src="{{item.order.product.store.head}}" style="width: 45px;height: 45px;" />
+            <image wx:else src="/images/my/default.png" style="width: 35px;height: 35px;" />
+          </view>
+          <view class="store-text">
+            <view><text style="color: red;font-size: large;font-weight: bolder;">{{item.order.product.id}}</text> - {{item.order.product.store.name}}</view>
+          </view>
+        </view> -->
+        <view class="product-card">
+          <van-card price="{{item.price}}" desc="{{item.args}}" title="{{item.title}}" thumb="{{item.image1}}">
+            <div slot="footer">
+              <view class="caozuo" style="display: none;">
+                <text class="subtract" style="border-right: 1px solid lightgray;">-</text>
+                <text class="singleCount">1</text>
+                <text class="add" style="border-left: 1px solid lightgray;"> + </text>
+              </view>
+              <view class="singleCount">X {{item.count}}</view>
+            </div>
+          </van-card>
+        </view>
+        <view class="status">
+          <text>{{item.status1}}</text>
+        </view>
+      </view>
+      <view class="button-list" wx:if="{{way}}">
+        <button wx:for="{{currentButtons.buttons}}" wx:key="index" type="primary" plain="true" data-item_idx="{{idx}}" data-button_idx="{{index}}" bindtap="operation">{{item.text}}</button>
+      </view>
+      <view class="button-list" wx:else>
+        <button wx:for="{{item.buttons}}" wx:for-item="items" wx:key="index" type="primary" plain="true" data-item_idx="{{idx}}" data-button_idx="{{index}}" bindtap="operation">{{items.text}}</button>
+      </view>
+      <view class="clearfix" style="clear: both;"></view>
+    </view>
+  </view>
+  <van-empty wx:if="{{!wayOrderList.length}}" description="暂无订单" />
+  <view wx:if="{{testChange}}">{{testChange}}</view>
+  <view style="height: 50px;"></view>
+</view>

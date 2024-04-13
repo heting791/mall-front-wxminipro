@@ -1,0 +1,103 @@
+.choose{
+  width: 90%;
+  margin: 10px auto;
+  font-size: 13px;
+}
+
+.choose-common{
+  margin-bottom: 15px;
+}
+
+.choose-common .price-sort {
+  display: inline-block;
+  width: 20px;
+  height: 34px;
+  vertical-align: middle;
+  margin-left: 3px;
+}
+
+.choose-common .list-mode {
+  float: right;
+  line-height: 19px;
+  margin-right: 0;
+}
+
+.choose-common .van-icon {
+
+}
+
+.choose-common view,.choose-other view{
+  display: inline-block;
+  margin-right: 4%;
+}
+
+.choose-common view{
+  margin-right: 8%;
+}
+
+.choose-common view:last-child text,.choose-common view:last-child image{
+  display: inline-block;
+  vertical-align: bottom;
+}
+.choose-common view:last-child text{
+  margin-right: 3px;
+}
+
+products-list-container{
+  margin-top: 10px;
+}
+
+.products-list-item{
+  margin-bottom: 10px;
+}
+
+.choose-other view{
+  width: auto;
+  padding: 0 10px;
+  height: 23px;
+  line-height: 23px;
+  background-color: whitesmoke;
+  border-radius: 15px;
+}
+
+.products-list-container-inner1 {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.products-list-container-inner1 .products-list-item {
+  display: inline-block;
+  vertical-align: top;
+  width: 47%;
+  margin-bottom: 30rpx;
+}
+
+.products-list-container-inner1 .products-list-item:nth-child(even) {
+  margin-left: 30rpx;
+}
+
+.products-list-container-inner1 .products-list-item .card-thumb image {
+  width: 100%;
+  height: 300rpx;
+}
+
+.products-list-container-inner1 .products-list-item .title {
+  font-size: 14px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.products-list-container-inner1 .products-list-item .price {
+  color: red;
+  font-weight: bolder;
+  font-size: 16px;
+  /* float: left; */
+  display: inline-block;
+}
+
+.products-list-container-inner1 .products-list-item .card-footer {
+  float: right;
+}

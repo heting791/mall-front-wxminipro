@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "订单详情",
+  "usingComponents": {
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-card": "/miniprogram_npm/@vant/weapp/card/index",
+    "van-goods-action": "/miniprogram_npm/@vant/weapp/goods-action/index",
+    "van-icon": "/miniprogram_npm/@vant/weapp/icon/index"
+  }
+}

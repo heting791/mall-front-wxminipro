@@ -1,0 +1,223 @@
+swiper{
+  width: 100%;
+  height: calc(750rpx * (960 / 1920));
+}
+
+swiper image{
+  width: 100%;
+  height: 100%;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.search-div{
+  width: 90%;
+  height: 80rpx;
+  line-height: 70rpx;
+  margin: 0 auto;
+  border: 1rpx solid lightgray;
+  border-radius: 100rpx;
+  font-size: 37rpx;
+  background-color: white;
+  opacity: 0.9;
+}
+
+.search-div image,.search-div input{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.search-div image{
+  margin: 0 10rpx 0 8rpx;
+}
+
+.search-div input{
+  width: 60%;
+}
+
+.search-div button{
+  background-color: red;
+  height: 97%;
+  width: 25%;
+  line-height: 80rpx;
+  text-align: center;
+  color: white;
+  border-radius: 100rpx;
+  float: right;
+}
+
+.swiper-container{
+  margin-top: 20rpx;
+}
+
+.category-container{
+  width: 95%;
+  margin: 25rpx auto;
+  border: 1rpx solid lightgray;
+  border-radius: 30rpx;
+  font-size: 35rpx;
+}
+.category-container .category-box{
+  width: 90%;
+  margin: 30rpx auto;
+}
+
+.category-container .category-box view{
+  display: inline-block;
+  margin: 0 0.5% 35rpx 0rpx;
+  text-align: center;
+  width: 24%;
+}
+
+.category-container .category-box view text,.category-container .category-box view image{
+  display: block;
+}
+.category-container .category-box view image{
+  margin: 0 auto;
+}
+
+.category-box view text {
+  margin-top: 8rpx;
+}
+
+.notice-box{
+  width: 100%;
+  height: 40px;
+}
+
+.notice-swiper{
+  width: 100%;
+  height: 100%;
+}
+
+.floor-container{
+  display: none;
+  width: 98%;
+  height: auto;
+  margin: 30rpx auto;
+}
+
+.floor-item-box{
+  width: 48%;
+  padding-bottom: 10px;
+  /* height: 150px; */
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid lightgray;
+  border-radius: 25rpx;
+  margin: 0 0 20rpx 10rpx;
+}
+
+.floor-item-box-list-item{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.floor-item-box-list-item image{
+  display: inline-block;
+  margin-left: 20rpx;
+  vertical-align: top;
+}
+
+.floor-item-box-title{
+  width: 100%;
+  height: 50rpx;
+  font-size: 38rpx;
+  margin: 20rpx 0 20rpx 20rpx;
+}
+
+.floor-item-box-title image{
+  margin-right: 20rpx;
+}
+
+.floor-item-box-title text{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.miaosha{
+  width: 97%;
+  background-color: red;
+  border-radius: 20rpx;
+  color: white;
+  font-size: 35rpx;
+  margin: 5rpx 0 0 10rpx;
+}
+
+.products-list-container{
+  width: 98%;
+  height: auto;
+  margin: 30rpx auto;
+}
+
+.products-list-container .product-item{
+  width: 48%;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1.5px solid lightgray;
+  border-radius: 25rpx;
+  margin: 0 0 10rpx 8rpx;
+}
+
+.products-list-container .product-item .product-text-box{
+  width: 92%;
+  height: auto;
+  margin: 20rpx auto;
+}
+
+.products-list-container .product-item .product-text-box .product-text-box-name{
+  font-size: 36rpx;
+  font-weight: bolder;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin: 10rpx 0;
+}
+
+.products-list-container .product-item .product-text-box .product-text-box-desc{
+  font-size: 30rpx;
+  margin: 20rpx 0;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  color: gray;
+}
+
+.product-text-box-cPrice{
+  color: red;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-right: 20rpx;
+}
+
+.product-text-box-oPrice{
+  font-size: 35rpx;
+  text-decoration: line-through;
+  color: gray;
+}

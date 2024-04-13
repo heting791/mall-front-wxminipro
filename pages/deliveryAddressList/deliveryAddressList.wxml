@@ -1,0 +1,138 @@
+<view class="index-container">
+  <van-sticky wx:if="{{addressList.length}}">
+    <view class="manage">
+      <text bindtap="edit" wx:if="{{!edit&&!orderCheck}}">管理</text>
+      <text bindtap="complate" wx:if="{{edit&&!orderCheck}}">完成</text>
+      <!-- <view class="order-add" style="display: inline-block;" wx:if="{{orderCheck}}">
+        <text bindtap="orderAdd">新增</text>
+      </view> -->
+    </view>
+  </van-sticky>
+
+
+
+  <radio-group wx:if="{{orderCheck}}" bindchange="checkedChange">
+    <view class="address-list">
+      <label class="address-list-item" wx:if="{{defaultAddress!=''}}" wx:key="index">
+        <view class="address-list-item-main">
+          <view class="address-icon">
+            <van-icon name="home-o" color="red" size="25px" />
+          </view>
+          <view class="address-info">
+            <text class="name">{{defaultAddress.id}} - {{defaultAddress.name}}</text>
+            <text class="phone">{{defaultAddress.phone}}</text>
+            <view class="address">{{defaultAddress.area}} {{defaultAddress.deatailad}}</view>
+          </view>
+          <view class="address-to-edit">
+            <radio value="{{defaultAddress.id}}" checked="{{defaultAddress.checked}}" color="red" />
+          </view>
+        </view>
+        <view class="address-list-item-manage" wx:if="{{edit}}">
+          <view class="default">
+            <view class="default-icon">
+              <van-icon name="checked" color="red" size="20px" wx:if="{{defaultAddress!=''}}" />
+              <van-icon wx:else name="circle" size="20px" />
+            </view>
+            <text>设为默认</text>
+          </view>
+          <view class="to-delete">删除</view>
+        </view>
+      </label>
+      <label class="address-list-item" wx:for="{{addressList}}" wx:if="{{!item.defaultad}}" wx:key="index">
+        <view class="address-list-item-main">
+          <view class="address-icon">
+            <van-icon name="location" color="red" size="25px" />
+          </view>
+          <view class="address-info">
+            <text class="name">{{item.id}} - {{item.name}}</text>
+            <text class="phone">{{item.phone}}</text>
+            <view class="address">{{item.area}} {{item.deatailad}}</view>
+          </view>
+          <view class="address-to-edit">
+            <radio value="{{item.id}}" checked="{{item.checked}}" color="red" />
+          </view>
+        </view>
+        <view class="address-list-item-manage" wx:if="{{edit}}">
+          <view class="default">
+            <view class="default-icon">
+              <van-icon name="checked" color="red" size="20px" wx:if="{{item.defaultad}}" />
+              <van-icon wx:else name="circle" size="20px" />
+            </view>
+            <text>设为默认</text>
+          </view>
+          <view class="to-delete">删除</view>
+        </view>
+      </label>
+      <van-empty wx:if="{{!addressList.length}}" description="您还没有添加收货地址" />
+    </view>
+  </radio-group>
+
+  <radio-group wx:else bindchange="defaultChange">
+    <view class="address-list">
+      <view class="address-list-item" wx:if="{{defaultAddress!=''}}">
+        <view class="address-list-item-main">
+          <view class="address-icon">
+            <van-icon name="home-o" color="red" size="25px" />
+          </view>
+          <view class="address-info">
+            <text class="name">{{defaultAddress.id}} - {{defaultAddress.name}}</text>
+            <text class="phone">{{defaultAddress.phone}}</text>
+            <view class="address">{{defaultAddress.area}} {{defaultAddress.deatailad}}</view>
+          </view>
+          <view class="address-to-edit" data-edit_id="{{defaultAddress.id}}" bindtap="toEdit">
+            <van-icon name="edit" />
+          </view>
+        </view>
+        <view class="address-list-item-manage" wx:if="{{edit}}">
+          <label class="default">
+            <view class="default-icon">
+              <radio value="{{defaultAddress.id}}" checked="{{defaultAddress!=''}}" color="red" />
+            </view>
+            <text>设为默认</text>
+          </label>
+          <view class="to-delete" data-delete_id="{{defaultAddress.id}}" bindtap="toDelete">删除</view>
+        </view>
+      </view>
+      <view class="address-list-item" wx:for="{{addressList}}" wx:key="index" wx:if="{{!item.defaultad}}">
+        <view class="address-list-item-main">
+          <view class="address-icon">
+            <van-icon name="location" color="red" size="25px" />
+          </view>
+          <view class="address-info">
+            <text class="name">{{item.id}} - {{item.name}}</text>
+            <text class="phone">{{item.phone}}</text>
+            <view class="address">{{item.area}} {{item.deatailad}}</view>
+          </view>
+          <view class="address-to-edit" data-edit_id="{{item.id}}" bindtap="toEdit">
+            <van-icon name="edit" />
+          </view>
+        </view>
+        <view class="address-list-item-manage" wx:if="{{edit}}">
+          <label class="default">
+            <view class="default-icon">
+              <radio value="{{item.id}}" checked="{{item.defaultad}}" color="red" />
+            </view>
+            <text>设为默认</text>
+          </label>
+          <view class="to-delete" data-delete_id="{{item.id}}" bindtap="toDelete">删除</view>
+        </view>
+      </view>
+      <van-empty wx:if="{{!addressList.length}}" description="您还没有添加收货地址" />
+    </view>
+
+  </radio-group>
+
+
+  <view style="height: 60px;background-color: white;" wx:if="{{addressList.length}}"></view>
+  <view class="add">
+    <!-- <navigator url="/pages/deliveryAddressEdit/deliveryAddressEdit"> -->
+    <van-goods-action>
+      <van-goods-action-button text="确定" wx:if="{{orderCheck&&addressList.length}}" color="linear-gradient(to right,#FC5332,#F01926)" bindtap="confirm" />
+      <van-goods-action-button text="+ 添加收货地址" wx:if="{{(!orderCheck) || (orderCheck&&(!addressList.length))}}" color="linear-gradient(to right,#FC5332,#F01926)" bindtap="addDelivery" />
+
+    </van-goods-action>
+    <!-- </navigator> -->
+  </view>
+
+
+</view>
